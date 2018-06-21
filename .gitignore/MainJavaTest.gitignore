@@ -1,0 +1,182 @@
+package com.company;
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        int[] iNoFile = {2, 3, 5, 7, 11, 13, 17, 19, 2, 3, 23, 29, 11, 13, 31, 37, 23, 29, 41, 43};
+
+        String [] sNoFile = {"Adverse", "means",  "harmful",  "or", "unfavorable", "Adverse",  "market", "conditions",
+                "caused", "the", "IPO", "to", "be", "poorly", "subscribed", "Averse", "refers", "to", "feelings",  "of",
+                "dislike",  "or", "opposition",  "I", "was", "averse", "to", "paying", "18", "dollars", "a", "share",
+                "for",  "a", "company", "that", "generates", "no", "revenue"};
+
+        // =============================================================================================================
+        // Task 1: Create an array of integers called myInt that can hold a maximum of 25 items
+        //         If you are unable to write the code to read the file then use the "iNoFile" array
+        //         given above. (2 marks)
+
+        int[] myInt = new int[25];
+
+        // Task 2: Open and read the data from i.txt into the myInt array (4 marks)
+
+        try {
+
+            File userFile = new File("i.txt");
+            Scanner scanUserFile = new Scanner(userFile, "UTF-8");
+
+            for(int i=0; i < 25; i++) {
+
+                if (scanUserFile.hasNextInt()) {
+
+                    myInt[i] =  scanUserFile.nextInt();
+
+                }
+                else {
+                    System.out.print("\n\nDataFileFILE has been completely READ OR NON INTEGER VALUE FOUND\n\n");
+                    scanUserFile.close();
+
+                    break;
+                }
+            }
+        } // end of try
+        catch (FileNotFoundException e) {
+            System.err.format("File Not Found Exception: %s%n", e);
+            e.printStackTrace();
+        }
+
+        // Task 3: Leave 2 blank lines and then print the contents of the array on 1 line separated by spaces using a for loop. (3 marks)
+        System.out.println();
+        System.out.println();
+        System.out.println("Task 3");
+
+        for (int i = 0; i < 25; i++){
+            System.out.print(myInt[i] + " ");
+        }
+        System.out.println();
+
+
+        // Task 4: Leave 2 blank lines and then sort the contents of the array. (2 marks)
+        System.out.println();
+        System.out.println();
+        System.out.println("Task 4");
+
+        Arrays.sort(myInt);
+
+        // Task 5: Leave 2 blank lines and then Print the contents of the sorted array on 1 line using a for loop. (3 marks)
+        System.out.println();
+        System.out.println();
+        System.out.println("Task 5");
+
+        for (int i = 0; i < 25; i++){
+            System.out.print(myInt[i] + " ");
+        }
+        System.out.println();
+
+
+        // Task 6: Leave 2 blank lines and then use a for loop to add together the first 5 values in the myInt array
+        // and display the result on a new line. (3 marks)
+        System.out.println();
+        System.out.println();
+        System.out.println("Task 6");
+
+        int sum = 0;
+        for (int i = 0; i < 5; i++){
+            sum = sum + myInt[i];
+        }
+        System.out.println(sum);
+
+        sum = 0;
+        for (int i = 0; i < 25; i += 2){
+            sum = sum + myInt[i];
+        }
+
+        System.out.println(sum);
+
+        // Task 7: Leave 2 blank lines and then find every value that is duplicated, and print
+        // this to the screen. (4 marks)
+        System.out.println();
+        System.out.println();
+        System.out.println("Task 7");
+
+        for (int i = 0; i < 25; i++){
+            System.out.print(myInt[i] + " ");
+        }
+        System.out.println();
+
+        for (int i = 0; i < 24; i++){
+            if (myInt[i] == myInt[i+1]){
+                System.out.print(myInt[i] + " ");
+            }
+
+        }
+        System.out.println();
+
+        // =============================================================================================================
+        // Task 8: Create an array of Strings called myStrings that can hold a maximum of 50 items
+        //         If you are unable to write the code to read the file then use the "sNoFile" array
+        //         given above. (2 marks)
+        System.out.println();
+        System.out.println();
+        System.out.println("Task 8");
+
+        String[] myStrings = new String[50];
+
+        // Task 9: Open and read the data from s.txt into the myStrings array (4 marks)
+        System.out.println();
+        System.out.println();
+        System.out.println("Task 9");
+
+        try {
+
+            File userFile2 = new File("s.txt");
+            Scanner scanUserFile2 = new Scanner(userFile2, "UTF-8");
+
+            for(int i=0; i < 50; i++) {
+
+                if (scanUserFile2.hasNext()) {
+
+                    myStrings[i] =  scanUserFile2.next();
+
+                }
+                else {
+                    System.out.print("\n\nDataFileFILE has been completely READ " + i + "\n");
+                    scanUserFile2.close();
+
+                    break;
+                }
+            }
+        } // end of try
+        catch (FileNotFoundException e) {
+            System.err.format("File Not Found Exception: %s%n", e);
+            e.printStackTrace();
+        }
+
+        // Task 10: Leave 2 blank lines and then print the contents of the array using a while loop. (3 marks)
+        System.out.println();
+        System.out.println();
+        System.out.println("Task 10");
+
+        int sEnd = 0;
+        while(sEnd < 50){
+            System.out.print(myStrings[sEnd] + " ");
+            sEnd++;
+        }
+
+        // Task 11: Leave 2 blank lines and then print the contents of the array in reverse order
+        // using a while loop. (4 marks)
+        System.out.println();
+        System.out.println();
+        System.out.println("Task 11");
+
+        sEnd = 49;
+        while(sEnd > 0){
+            System.out.print(myStrings[sEnd] + " ");
+            sEnd--;
+        }
+        System.out.println();
+    }
+}
